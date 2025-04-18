@@ -1,0 +1,36 @@
+{% extends 'app/log_template.html' %}
+
+{% block title %}Đăng Nhập{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class="card">
+        <div class="card-body , text-align:center">
+          <h3 class="card-title">ĐĂNG NHẬP</h3>
+          <form method="post" novalidate>
+            {% csrf_token %}
+            {% include 'app/form.html' %}
+            <button type="submit" class="btn btn-primary btn-block text-align:center">Đăng nhập</button>
+          </form>
+        </div>
+        <div class="card-footer text-muted text-center">
+          Chưa có tài khoản? <a href="{% url 'login' %}">Đăng kí</a>
+        </div>
+      </div>
+      <div class="text-center py-2">
+        <small>
+          <a href="{% url 'password_reset'%}" class="text-muted">Quên mật khẩu?</a>
+        </small>
+      </div>
+
+      {% comment %} {% load socialaccount %}
+      <div class="text-center py-2">
+        <small>
+          <a href="{% provider_login_url 'google' %}">Login With Google</a>
+        </small>
+      </div> {% endcomment %}
+
+    </div>
+  </div>
+{% endblock %}

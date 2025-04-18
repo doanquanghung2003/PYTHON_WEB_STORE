@@ -1,0 +1,48 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% block main_content %}
+        <h3>kết quả tìm kiếm {{searchid}}</h3><br>
+        <div class="row m-0">
+            {%for product in keys %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+              <img
+                src="/static/images/{{ product.image }}"
+                style="width: 100%; aspect-ratio: 5 / 3; object-fit: cover"
+              />
+              <div class="box-element product">
+                <h5 class='product-name' >{{product.name}}</h5>
+                <hr class='m-0 py-1' />
+                <h6 style="display: inline-block">
+                  <strong>${{product.price | floatformat:2}}</strong>
+                </h6>
+                <div class="w-100 pt-2">
+                  <button
+                    data-product="{{product.id}}"
+                    onclick="updateOrder(this)"
+                    data-action="add"
+                    class="btn btn-outline-secondary add-btn update-cart"
+                  >
+                    Add to cart
+                  </button>
+                  <a class="btn btn-outline-success" href=" {% url 'detail' %}">View</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        {% endblock main_content %}
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/log.css' %}">
+{% endblock %}
+
+{% block main_content %}
+  <div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'home' %}">but hien len va noi : hien len nay</a>
+    </h1>
+    {% block content %}
+    {% endblock %}
+  </div>
+{% endblock %}
